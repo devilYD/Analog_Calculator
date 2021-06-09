@@ -4,7 +4,8 @@ using namespace std;
 
 int main(void)
 {
-    Main_Page();
+    Formula F;
+    Main_Page(F);
 
     return 0;
 }
