@@ -1,0 +1,5 @@
+D:/code/Analog_Calculator/project/build-project-Desktop_Qt_6_1_1_MinGW_64_bit-Debug/CMakeFiles/project.dir
+D:/code/Analog_Calculator/project/build-project-Desktop_Qt_6_1_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/code/Analog_Calculator/project/build-project-Desktop_Qt_6_1_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/code/Analog_Calculator/project/build-project-Desktop_Qt_6_1_1_MinGW_64_bit-Debug/CMakeFiles/project_autogen_timestamp_deps.dir
+D:/code/Analog_Calculator/project/build-project-Desktop_Qt_6_1_1_MinGW_64_bit-Debug/CMakeFiles/project_autogen.dir
