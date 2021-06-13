@@ -1,15 +1,6 @@
 # ninja log v5
-1	441	6452245095543300	project_autogen/timestamp	da0b8c40593cd194
-442	1949	6452245110613031	CMakeFiles/project.dir/project_autogen/mocs_compilation.cpp.obj	a578f6b702ffccbe
-444	2104	6452245112169127	CMakeFiles/project.dir/main.cpp.obj	e2069b83d2d73bf3
-446	2155	6452245112677851	CMakeFiles/project.dir/mainwindow.cpp.obj	f4fa3219a8ecddb1
-2156	2348	6452245114583020	project.exe	c9d6e0e7efcfd4fb
-4	104	6452246167257952	project_autogen/timestamp	da0b8c40593cd194
-104	1371	6452246179924101	CMakeFiles/project.dir/project_autogen/mocs_compilation.cpp.obj	a578f6b702ffccbe
-1371	1559	6452246181779143	project.exe	c9d6e0e7efcfd4fb
-5	100	6452246695049851	project_autogen/timestamp	da0b8c40593cd194
-100	1421	6452246708254565	CMakeFiles/project.dir/project_autogen/mocs_compilation.cpp.obj	a578f6b702ffccbe
 5	104	6452247418120229	project_autogen/timestamp	da0b8c40593cd194
+444	2104	6452245112169127	CMakeFiles/project.dir/main.cpp.obj	e2069b83d2d73bf3
+1601	1786	6452247434935676	project.exe	c9d6e0e7efcfd4fb
 104	1431	6452247431405000	CMakeFiles/project.dir/project_autogen/mocs_compilation.cpp.obj	a578f6b702ffccbe
 106	1600	6452247433100590	CMakeFiles/project.dir/mainwindow.cpp.obj	f4fa3219a8ecddb1
-1601	1786	6452247434935676	project.exe	c9d6e0e7efcfd4fb
