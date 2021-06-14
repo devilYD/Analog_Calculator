@@ -19,14 +19,27 @@ public:
 
 Numchar::Numchar(vector<char> &ch)
 {
+    int i = 0;
+    double afterpoint;
     if (ch[0] >= '0' && ch[0] <= '9')
     {
         this->Number=0.0;
         vector<char>::iterator it;
-        for(it=ch.begin();it!=ch.end();it++)
+        for(it=ch.begin();it!=ch.end()||*it!='.';it++)
         {
             this->Number = this->Number*10 + ((int)*it -(int)'0');
         }
+        if (*it == '.')
+            for(it=it+1;it!=ch.end();it++)
+            {
+                i = i+1;
+                afterpoint = (int)*it -(int)'0';
+                for (int n = 0; n < i; n++)
+                {
+                    afterpoint = afterpoint/10;
+                }
+                this->Number = this->Number+ afterpoint;
+            }    
         this->isNum = 1;
     }
     else if (ch[0] == '+' || ch[0] == '-' || ch[0] == '*' || ch[0] == '/' || ch[0] == '(' || ch[0] == ')')
@@ -38,10 +51,21 @@ Numchar::Numchar(vector<char> &ch)
     {
         this->Number=0.0;
         vector<char>::iterator it;
-        for(it=ch.begin()+1;it!=ch.end();it++)
+        for(it=ch.begin();it!=ch.end()||*it!='.';it++)
         {
             this->Number = this->Number*10 + ((int)*it -(int)'0');
         }
+        if (*it == '.')
+            for(it=it+1;it!=ch.end();it++)
+            {
+                i = i+1;
+                afterpoint = (int)*it -(int)'0';
+                for (int n = 0; n < i; n++)
+                {
+                    afterpoint = afterpoint/10;
+                }
+                this->Number = this->Number+ afterpoint;
+            }  
         if (ch[0] == 'A')
             this->Number = abs(this->Number);
         else
@@ -51,13 +75,10 @@ Numchar::Numchar(vector<char> &ch)
     
 }
 
-Numchar::~Numchar()
-{
-}
-
 class Formula
 {
 private:
+    vector<vector<char>> charlist;
     vector<Numchar> Fm;
     vector<double> Number;
     vector<char> Operator;
