@@ -94,6 +94,8 @@ public:
     Numchar build(vector<char> &ch);
     double doit();
     int get_init(Numchar &ch,vector<Numchar> &After);
+    double run(double a,double b,char c);
+    double run(double a,char c);
 };
 
 Formula::Formula(vector<char> &ch)
@@ -127,7 +129,7 @@ Formula::Formula(vector<char> &ch)
         } else if (change == 1)
         {
             Fm.push_back(build(mid));
-            if (Fm[Fm.size()-1].Isnumber())
+            if (Fm[Fm.size()-2].Isnumber())
                 Fm.back().setgmnum(2);
             else
                 Fm.back().setgmnum(1);
@@ -153,6 +155,7 @@ Numchar Formula::build(vector<char> &ch)
 double Formula::doit()
 {
     vector<Numchar> After;
+    vector<Numchar> Mid;
     for (int i = 0; i < Fm.size(); i++)
     {
         if (Fm[i].Isnumber())
@@ -161,12 +164,85 @@ double Formula::doit()
         {
             if (Fm[i].CValue() == '(')
             {
-                
+                for (int i = 0; i < Mid.size(); i++)
+                {
+                    After.push_back(Mid[i]);
+                }
+                Mid.clear();
             }
-            
+            else
+            {
+                get_init(Fm[i],Mid);
+            } 
         }
-        
-        
+    }
+    for (int i = 0; i < Mid.size(); i++)
+                {
+                    After.push_back(Mid[i]);
+                }
+    Mid.clear();
+
+    vector<Numchar>::iterator it;
+    for (it = After.begin(); it != After.end(); it++)
+    {
+        if (it.base()->Isnumber())
+        {
+            this->Number.push_back(it.base()->NValue());
+        } else
+        {
+            if (it.base()->Isone() == 1)
+            {
+                this->Number.push_back(this->run(Pop(this->Number),it.base()->CValue()));
+            }
+            else
+            {
+                this->Number.push_back(this->run(Pop(this->Number),Pop(this->Number),it.base()->CValue()));
+            }
+        }
+    }
+    return this->Number[0];
+}
+
+double Formula::run(double a,double b,char c)
+{
+    if (c == '+')
+        return a+b;
+    else if (c == '-')
+        return a-b;
+    else if (c == '*')
+        return a*b;
+    else if (c == '/')
+    {   
+        if (b == 0)
+        {
+            this->err = 2;
+            return 0;
+        }
+        else
+            return a/b;
+    }
+}
+
+double Formula::run(double a,char c)
+{
+    if (c=='-')
+    {
+        return 0-a;
+    }
+    else if ( c == 'A')
+    {
+        return abs(a);
+    }
+    else if(c=='S')
+    {
+        if (a < 0)
+        {
+            this->err = 4;
+        }
+        else
+        {
+            return sqrt(a);
+        }
     }
 }
 
@@ -227,6 +303,13 @@ int Formula::get_init(Numchar &ch,vector<Numchar> &After)
 Numchar Pop(vector<Numchar> &X)
 {
     Numchar ch(X.back());
+    X.pop_back();
+    return ch;
+}
+
+double Pop(vector<double> &X)
+{
+    double ch=X.back();
     X.pop_back();
     return ch;
 }
