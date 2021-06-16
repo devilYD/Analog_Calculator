@@ -12,6 +12,7 @@ private:
     char Char;
     bool isNum;
     bool isOne;
+    int gmnum;
 public:
     Numchar(vector<char> &ch);
     ~Numchar();
@@ -19,7 +20,19 @@ public:
     int Isone();
     double NValue();
     char CValue();
+    void setgmnum(int a);
+    int hnum();
 };
+
+int Numchar::hnum()
+{
+    return this->gmnum;
+}
+
+void Numchar::setgmnum(int a)
+{
+    this->gmnum = a;
+}
 
 Numchar::Numchar(vector<char> &ch)
 {
@@ -74,12 +87,13 @@ private:
     vector<Numchar> Fm;
     vector<double> Number;
     vector<char> Operator;
-
+    int err;
 public:
     Formula(vector<char> &ch);
     ~Formula();
     Numchar build(vector<char> &ch);
     double doit();
+    int get_init(Numchar &ch,vector<Numchar> &After);
 };
 
 Formula::Formula(vector<char> &ch)
@@ -87,6 +101,7 @@ Formula::Formula(vector<char> &ch)
     vector<Numchar> Fm;
     vector<double> Number;
     vector<char> Operator;
+    int err =0;
 
     int change = 0; //0为数字状态，1为运算符
     vector<char> mid;
@@ -112,6 +127,10 @@ Formula::Formula(vector<char> &ch)
         } else if (change == 1)
         {
             Fm.push_back(build(mid));
+            if (Fm[Fm.size()-1].Isnumber())
+                Fm.back().setgmnum(2);
+            else
+                Fm.back().setgmnum(1);
             mid.clear();
         }
         mid.push_back(*it);
@@ -142,27 +161,73 @@ double Formula::doit()
         {
             if (Fm[i].CValue() == '(')
             {
-                /* code */
+                
             }
             
         }
         
         
     }
-    
-
-
 }
 
-int Priority(char operate)
+int Priority(Numchar &operate)
 {
-    if (operate == '+' || operate == '-')
-        return 1;
-    else if (operate == '*' || operate == '/')
+    if (operate.CValue() == '+' || operate.CValue() == '-')
         return 2;
-    else if (operate == '(')
+    else if (operate.CValue() == '*' || operate.CValue() == '/')
         return 3;
+    else if (operate.CValue() == '(')
+        return 1;
     else
         return 0;
+}
+
+int Formula::get_init(Numchar &ch,vector<Numchar> &After)
+{
+    vector<Numchar>::iterator it;
+    if (ch.CValue() == '(')
+    {
+        After.push_back(ch);
+    }
+    else if( ch.CValue() == ')')
+    {
+        vector<Numchar> mid;
+        while (After.back().CValue() != '(' || !After.empty())
+        {
+            mid.push_back(Pop(After));
+        }
+        if (After.empty())
+        {
+            this->err =1;//输入出错
+        } else
+        {
+            After.pop_back();
+        }
+        while (!mid.empty())
+        {
+            After.push_back(Pop(mid));
+        }    
+    }
+    else
+    {
+        vector<Numchar> mid;
+        while (Priority(After.back())>=Priority(ch) && After.back().CValue() != '(')
+        {
+            mid.push_back(Pop(After));
+        }
+        After.push_back(ch);
+        while (!mid.empty())
+        {
+            After.push_back(Pop(mid));
+        }
+    }
+    return 0;
+}
+
+Numchar Pop(vector<Numchar> &X)
+{
+    Numchar ch(X.back());
+    X.pop_back();
+    return ch;
 }
 #endif // ADT_H
