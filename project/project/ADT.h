@@ -94,11 +94,25 @@ Formula::Formula(vector<char> &ch)
     vector<char>::iterator it;
     for (it = ch.begin(); it != ch.end(); it++)
     {
-        if ( change == 0 && (*it < '0' | *it >'9'))
+        if (it == ch.begin())
+        {
+            if ( (*it > '0' && *it < '9' ) || *it == '.')
+                change = 0;
+            else
+            {
+                mid.push_back(*it);
+                change = 1;
+            }
+        }
+        if ( change == 0 && (*it < '0' || *it >'9')&&*it!='.')
         {
             Fm.push_back(build(mid));
             mid.clear();
             change = (change + 1) % 2;
+        } else if (change == 1)
+        {
+            Fm.push_back(build(mid));
+            mid.clear();
         }
         mid.push_back(*it);
     }
