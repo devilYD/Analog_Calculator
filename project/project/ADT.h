@@ -11,11 +11,12 @@ private:
     double Number;
     char Char;
     bool isNum;
-
+    bool isOne;
 public:
     Numchar(vector<char> &ch);
     ~Numchar();
     int Isnumber();
+    int Isone();
     double NValue();
     char CValue();
 };
@@ -45,35 +46,10 @@ Numchar::Numchar(vector<char> &ch)
             }
         this->isNum = 1;
     }
-    else if (ch[0] == '+' || ch[0] == '-' || ch[0] == '*' || ch[0] == '/' || ch[0] == '(' || ch[0] == ')')
+    else if (ch[0] == '+' || ch[0] == '-' || ch[0] == '*' || ch[0] == '/' || ch[0] == '(' || ch[0] == ')' || ch[0] == 'A' || ch[0] == 'S')
     {
         this->Char = ch[0];
         this->isNum = 0;
-    }
-    else if (ch[0] == 'A' || ch[0] == 'S')
-    {
-        this->Number = 0.0;
-        vector<char>::iterator it;
-        for (it = ch.begin(); it != ch.end() || *it != '.'; it++)
-        {
-            this->Number = this->Number * 10 + ((int)*it - (int)'0');
-        }
-        if (*it == '.')
-            for (it = it + 1; it != ch.end(); it++)
-            {
-                i = i + 1;
-                afterpoint = (int)*it - (int)'0';
-                for (int n = 0; n < i; n++)
-                {
-                    afterpoint = afterpoint / 10;
-                }
-                this->Number = this->Number + afterpoint;
-            }
-        if (ch[0] == 'A')
-            this->Number = abs(this->Number);
-        else
-            this->Number = sqrt(this->Number);
-        this->isNum = 1;
     }
 }
 
@@ -118,7 +94,7 @@ Formula::Formula(vector<char> &ch)
     vector<char>::iterator it;
     for (it = ch.begin(); it != ch.end(); it++)
     {
-        if ((change == 0 && (*it > '9' || *it < '0') && *it != 'A' && *it != 'S')||(change == 1 && !(*it > '9' || *it < '0') && *it != 'A' && *it != 'S'))
+        if ( change == 0 && (*it < '0' | *it >'9'))
         {
             Fm.push_back(build(mid));
             mid.clear();
