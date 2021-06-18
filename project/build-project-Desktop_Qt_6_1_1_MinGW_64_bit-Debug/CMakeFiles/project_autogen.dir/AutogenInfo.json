@@ -193,11 +193,6 @@
 	"HEADERS" : 
 	[
 		[
-			"D:/code/Analog_Calculator/project/project/ADT.h",
-			"MU",
-			"EWIEGA46WW/moc_ADT.cpp"
-		],
-		[
 			"D:/code/Analog_Calculator/project/project/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp"

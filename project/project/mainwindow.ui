@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>792</width>
-    <height>679</height>
+    <width>516</width>
+    <height>61</height>
    </rect>
   </property>
   <property name="cursor">
@@ -19,13 +19,16 @@
   <property name="windowTitle">
    <string>Analog_Calculator</string>
   </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>792</width>
+     <width>516</width>
      <height>23</height>
     </rect>
    </property>

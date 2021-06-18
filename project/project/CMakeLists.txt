@@ -31,7 +31,6 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
-        ADT.h
         mainwindow.ui
 )
 

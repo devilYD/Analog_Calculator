@@ -135,7 +135,7 @@ build project_autogen/timestamp: CUSTOM_COMMAND C$:/Qt/6.1.1/mingw81_64/./bin/mo
 #############################################
 # Phony custom command for CMakeFiles\project_autogen_timestamp_deps
 
-build CMakeFiles/project_autogen_timestamp_deps: phony C$:/Qt/6.1.1/mingw81_64/bin/Qt6Widgets.dll C$:/Qt/6.1.1/mingw81_64/bin/Qt6Core.dll C$:/Qt/6.1.1/mingw81_64/./bin/moc.exe C$:/Qt/6.1.1/mingw81_64/./bin/uic.exe
+build CMakeFiles/project_autogen_timestamp_deps: phony C$:/Qt/6.1.1/mingw81_64/bin/Qt6Widgets.dll C$:/Qt/6.1.1/mingw81_64/./bin/moc.exe C$:/Qt/6.1.1/mingw81_64/bin/Qt6Core.dll C$:/Qt/6.1.1/mingw81_64/./bin/uic.exe
 
 
 #############################################
